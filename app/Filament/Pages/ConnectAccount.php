@@ -35,22 +35,22 @@ class ConnectAccount extends Page
             'name' => 'Instagram',
             'slug' => 'instagram',
             'icon' => 'https://www.instagram.com/favicon.ico',
-            'description' => 'Post foto, reels, dan story ke Instagram',
-            'available' => false,
+            'description' => 'Post foto, reels, dan story ke Instagram (Butuh Facebook Page)',
+            'available' => true,
         ],
         [
             'name' => 'TikTok',
             'slug' => 'tiktok',
             'icon' => 'https://www.tiktok.com/favicon.ico',
             'description' => 'Upload video ke TikTok',
-            'available' => false,
+            'available' => true,
         ],
         [
             'name' => 'Facebook',
             'slug' => 'facebook',
             'icon' => 'https://www.facebook.com/favicon.ico',
             'description' => 'Post ke Facebook Page',
-            'available' => false,
+            'available' => true,
         ],
     ];
 
