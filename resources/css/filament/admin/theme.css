@@ -1,0 +1,181 @@
+/*
+ * Al-Amani Content Hub - Custom Theme
+ * Premium, elegant styling for Filament Admin Panel
+ */
+
+/* Enhanced Card Styling */
+.fi-section {
+    @apply rounded-xl shadow-sm border border-gray-200/60 dark:border-gray-700/60;
+    @apply bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm;
+    transition: all 0.2s ease-in-out;
+}
+
+.fi-section:hover {
+    @apply shadow-md border-gray-300/60 dark:border-gray-600/60;
+}
+
+/* Stats Widget Enhancement */
+.fi-wi-stats-overview-stat {
+    @apply rounded-xl shadow-sm;
+    @apply bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900;
+    @apply border border-gray-200/60 dark:border-gray-700/60;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.fi-wi-stats-overview-stat:hover {
+    @apply shadow-lg;
+    transform: translateY(-2px);
+}
+
+/* Table Enhancements */
+.fi-ta {
+    @apply rounded-xl overflow-hidden;
+}
+
+.fi-ta-row {
+    transition: background-color 0.15s;
+}
+
+.fi-ta-row:hover {
+    @apply bg-violet-50/50 dark:bg-violet-900/10;
+}
+
+/* Button Styling */
+.fi-btn {
+    @apply font-medium;
+    transition: all 0.2s ease-in-out;
+}
+
+.fi-btn-primary {
+    @apply bg-gradient-to-r from-violet-600 to-indigo-600;
+    @apply hover:from-violet-700 hover:to-indigo-700;
+    @apply shadow-sm hover:shadow-md;
+}
+
+/* Sidebar Enhancement */
+.fi-sidebar {
+    @apply bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800;
+    @apply border-r border-gray-200/80 dark:border-gray-700/80;
+}
+
+.fi-sidebar-nav-groups {
+    @apply space-y-1;
+}
+
+.fi-sidebar-item {
+    @apply rounded-lg mx-2;
+    transition: all 0.15s ease-in-out;
+}
+
+.fi-sidebar-item:hover {
+    @apply bg-violet-100/50 dark:bg-violet-900/20;
+}
+
+.fi-sidebar-item-active {
+    @apply bg-violet-100 dark:bg-violet-900/30;
+    @apply text-violet-700 dark:text-violet-300;
+    @apply border-l-2 border-violet-500;
+}
+
+/* Badge Styling */
+.fi-badge {
+    @apply font-medium shadow-sm;
+}
+
+/* Form Inputs */
+.fi-input {
+    @apply rounded-lg border-gray-300 dark:border-gray-600;
+    @apply focus:border-violet-500 focus:ring-violet-500/20;
+    transition: all 0.2s;
+}
+
+/* Modal Enhancement */
+.fi-modal-content {
+    @apply rounded-2xl shadow-2xl;
+    @apply border border-gray-200/60 dark:border-gray-700/60;
+    animation: modal-appear 0.2s ease-out;
+}
+
+@keyframes modal-appear {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Dashboard Welcome Message */
+.fi-page-header {
+    @apply mb-6;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-gray-100 dark:bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400 dark:bg-gray-500;
+}
+
+/* Notifications Enhancement */
+.fi-notification {
+    @apply rounded-xl shadow-lg;
+    animation: notification-slide 0.3s ease-out;
+}
+
+@keyframes notification-slide {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* File Upload Enhancement */
+.fi-fo-file-upload {
+    @apply rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600;
+    @apply hover:border-violet-400 dark:hover:border-violet-500;
+    @apply bg-gray-50/50 dark:bg-gray-800/50;
+    transition: all 0.2s;
+}
+
+/* Loading States */
+.fi-loading-indicator {
+    @apply text-violet-500;
+}
+
+/* Header/Topbar */
+.fi-topbar {
+    @apply bg-white/90 dark:bg-gray-900/90 backdrop-blur-md;
+    @apply border-b border-gray-200/80 dark:border-gray-700/80;
+}
+
+/* Resource Table Actions */
+.fi-ta-actions {
+    @apply gap-1;
+}
+
+.fi-ta-action {
+    @apply rounded-lg px-2 py-1;
+    transition: all 0.15s;
+}
+
+.fi-ta-action:hover {
+    @apply bg-gray-100 dark:bg-gray-700;
+}
