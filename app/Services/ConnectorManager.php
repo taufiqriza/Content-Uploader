@@ -4,6 +4,9 @@ namespace App\Services;
 
 use App\Contracts\SocialPlatformConnector;
 use App\Services\Connectors\YouTubeConnector;
+use App\Services\Connectors\InstagramConnector;
+use App\Services\Connectors\TikTokConnector;
+use App\Services\Connectors\FacebookConnector;
 use InvalidArgumentException;
 
 class ConnectorManager
@@ -14,8 +17,9 @@ class ConnectorManager
     {
         // Register all available connectors
         $this->register('youtube', YouTubeConnector::class);
-        // Future: $this->register('instagram', InstagramConnector::class);
-        // Future: $this->register('tiktok', TikTokConnector::class);
+        $this->register('instagram', InstagramConnector::class);
+        $this->register('tiktok', TikTokConnector::class);
+        $this->register('facebook', FacebookConnector::class);
     }
 
     /**
