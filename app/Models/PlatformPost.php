@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 class PlatformPost extends Model
 {
+    use Auditable;
     protected $fillable = [
         'content_item_id',
         'social_account_id',

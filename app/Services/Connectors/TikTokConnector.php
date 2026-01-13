@@ -11,15 +11,22 @@ use Exception;
 
 class TikTokConnector implements SocialPlatformConnector
 {
-    protected string $clientKey;
-    protected string $clientSecret;
-    protected string $redirectUri;
+    protected ?string $clientKey;
+    protected ?string $clientSecret;
+    protected ?string $redirectUri;
 
     public function __construct()
     {
         $this->clientKey = config('services.tiktok.client_key');
         $this->clientSecret = config('services.tiktok.client_secret');
         $this->redirectUri = config('services.tiktok.redirect_uri');
+    }
+
+    protected function ensureConfigured(): void
+    {
+        if (empty($this->clientKey) || empty($this->clientSecret)) {
+            throw new Exception('TikTok API not configured. Please set TIKTOK_CLIENT_KEY and TIKTOK_CLIENT_SECRET in your .env file.');
+        }
     }
 
     public function getPlatformName(): string
@@ -38,6 +45,8 @@ class TikTokConnector implements SocialPlatformConnector
 
     public function getAuthorizationUrl(string $state): string
     {
+        $this->ensureConfigured();
+        
         $params = http_build_query([
             'client_key' => $this->clientKey,
             'redirect_uri' => $this->redirectUri,

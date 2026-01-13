@@ -11,9 +11,9 @@ use Exception;
 
 class FacebookConnector implements SocialPlatformConnector
 {
-    protected string $clientId;
-    protected string $clientSecret;
-    protected string $redirectUri;
+    protected ?string $clientId;
+    protected ?string $clientSecret;
+    protected ?string $redirectUri;
     protected string $graphVersion = 'v18.0';
 
     public function __construct()
@@ -21,6 +21,13 @@ class FacebookConnector implements SocialPlatformConnector
         $this->clientId = config('services.facebook.client_id');
         $this->clientSecret = config('services.facebook.client_secret');
         $this->redirectUri = config('services.facebook.redirect_uri');
+    }
+
+    protected function ensureConfigured(): void
+    {
+        if (empty($this->clientId) || empty($this->clientSecret)) {
+            throw new Exception('Facebook API not configured. Please set FACEBOOK_CLIENT_ID and FACEBOOK_CLIENT_SECRET in your .env file.');
+        }
     }
 
     public function getPlatformName(): string
@@ -39,6 +46,8 @@ class FacebookConnector implements SocialPlatformConnector
 
     public function getAuthorizationUrl(string $state): string
     {
+        $this->ensureConfigured();
+        
         $params = http_build_query([
             'client_id' => $this->clientId,
             'redirect_uri' => $this->redirectUri,

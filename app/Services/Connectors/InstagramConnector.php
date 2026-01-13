@@ -11,9 +11,9 @@ use Exception;
 
 class InstagramConnector implements SocialPlatformConnector
 {
-    protected string $clientId;
-    protected string $clientSecret;
-    protected string $redirectUri;
+    protected ?string $clientId;
+    protected ?string $clientSecret;
+    protected ?string $redirectUri;
     protected string $graphVersion = 'v18.0';
 
     public function __construct()
@@ -21,6 +21,13 @@ class InstagramConnector implements SocialPlatformConnector
         $this->clientId = config('services.instagram.client_id');
         $this->clientSecret = config('services.instagram.client_secret');
         $this->redirectUri = config('services.instagram.redirect_uri');
+    }
+
+    protected function ensureConfigured(): void
+    {
+        if (empty($this->clientId) || empty($this->clientSecret)) {
+            throw new Exception('Instagram API not configured. Please set INSTAGRAM_CLIENT_ID and INSTAGRAM_CLIENT_SECRET in your .env file.');
+        }
     }
 
     public function getPlatformName(): string
@@ -39,6 +46,8 @@ class InstagramConnector implements SocialPlatformConnector
 
     public function getAuthorizationUrl(string $state): string
     {
+        $this->ensureConfigured();
+        
         $params = http_build_query([
             'client_id' => $this->clientId,
             'redirect_uri' => $this->redirectUri,

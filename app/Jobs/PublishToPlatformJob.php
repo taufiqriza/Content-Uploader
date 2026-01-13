@@ -5,6 +5,9 @@ namespace App\Jobs;
 use App\Models\ContentItem;
 use App\Models\PlatformPost;
 use App\Models\SocialAccount;
+use App\Models\User;
+use App\Notifications\PublishSuccessNotification;
+use App\Notifications\PublishFailedNotification;
 use App\Services\ConnectorManager;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -68,20 +71,42 @@ class PublishToPlatformJob implements ShouldQueue
                 $result['external_url']
             );
 
+            // Send success notification
+            $this->notifySuccess($platformPost);
+
             // Update content item status if all posts are done
             $this->updateContentItemStatus($contentItem);
 
         } catch (Exception $e) {
             $platformPost->markAsFailed($e->getMessage());
 
-            // If max retries reached, update content item status
+            // If max retries reached, update content item status and notify
             if ($this->attempts() >= $this->tries) {
                 $this->updateContentItemStatus($contentItem);
+                $this->notifyFailure($platformPost);
             }
 
             throw $e; // Re-throw to trigger retry
         } finally {
             $lock->release();
+        }
+    }
+
+    protected function notifySuccess(PlatformPost $platformPost): void
+    {
+        $user = $platformPost->contentItem->user;
+        
+        if ($user) {
+            $user->notify(new PublishSuccessNotification($platformPost));
+        }
+    }
+
+    protected function notifyFailure(PlatformPost $platformPost): void
+    {
+        $user = $platformPost->contentItem->user;
+        
+        if ($user) {
+            $user->notify(new PublishFailedNotification($platformPost));
         }
     }
 
@@ -114,5 +139,9 @@ class PublishToPlatformJob implements ShouldQueue
             'status' => 'failed',
             'error_message' => 'Max retries exceeded: ' . $exception->getMessage(),
         ]);
+
+        // Send failure notification
+        $this->notifyFailure($this->platformPost);
     }
 }
+
