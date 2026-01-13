@@ -1,13 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" width="200" height="50">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50">
   <defs>
-    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#6366F1;stop-opacity:1" />
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2563EB"/>
+      <stop offset="100%" style="stop-color:#4F46E5"/>
     </linearGradient>
   </defs>
-  <rect x="0" y="10" width="30" height="30" rx="6" fill="url(#gradient)"/>
-  <path d="M8 25 L12 20 L18 28 L22 22" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="21" cy="18" r="3" fill="white"/>
-  <text x="40" y="32" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600" fill="#1F2937">Al-Amani</text>
-  <text x="125" y="32" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="400" fill="#8B5CF6">Hub</text>
+  
+  <!-- Icon Background -->
+  <rect x="5" y="8" width="34" height="34" rx="8" fill="url(#logoGradient)"/>
+  
+  <!-- Play Icon -->
+  <polygon points="18,18 18,32 30,25" fill="white"/>
+  
+  <!-- Text -->
+  <text x="48" y="32" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" fill="#1F2937">
+    Al-Amani<tspan fill="#2563EB">Hub</tspan>
+  </text>
 </svg>

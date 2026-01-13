@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Model;
 
 class ContentItem extends Model
 {
+    use Auditable;
     protected $fillable = [
         'organization_id',
         'media_asset_id',

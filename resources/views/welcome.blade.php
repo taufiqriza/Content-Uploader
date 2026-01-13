@@ -52,21 +52,51 @@
                     <span class="font-bold text-lg text-gray-900">Al-Amani<span class="text-blue-600">Hub</span></span>
                 </a>
                 
-                <div class="hidden md:flex items-center gap-6">
-                    <a href="#features" class="text-gray-600 hover:text-blue-600 text-sm font-medium transition">Fitur</a>
-                    <a href="#platforms" class="text-gray-600 hover:text-blue-600 text-sm font-medium transition">Platform</a>
-                    <a href="#how-it-works" class="text-gray-600 hover:text-blue-600 text-sm font-medium transition">Cara Kerja</a>
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center gap-1">
+                    <a href="/" class="px-3 py-2 rounded-lg text-sm font-medium bg-blue-50 text-blue-600">Beranda</a>
+                    <a href="/about" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-blue-600 hover:bg-gray-50 transition">Tentang</a>
+                    <a href="/pricing" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-blue-600 hover:bg-gray-50 transition">Harga</a>
+                    <a href="/faq" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-blue-600 hover:bg-gray-50 transition">FAQ</a>
+                    <a href="/contact" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-blue-600 hover:bg-gray-50 transition">Kontak</a>
                 </div>
                 
                 <div class="flex items-center gap-3">
-                    <a href="/admin/login" class="text-gray-600 hover:text-blue-600 text-sm font-medium transition">Masuk</a>
-                    <a href="/admin/register" class="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-sm font-semibold rounded-lg shadow-lg shadow-blue-600/30 hover:shadow-blue-600/50 transition">
+                    <a href="/login" class="text-gray-600 hover:text-blue-600 text-sm font-medium transition">Masuk</a>
+                    <a href="/register" class="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-sm font-semibold rounded-lg shadow-lg shadow-blue-600/30 hover:shadow-blue-600/50 transition">
                         Daftar Gratis
                     </a>
                 </div>
             </div>
         </div>
+        
+        <!-- Mobile Navigation -->
+        <div class="md:hidden border-t border-gray-100">
+            <div class="flex justify-around py-2">
+                <a href="/" class="flex flex-col items-center px-2 py-1 text-blue-600">
+                    <i class="fas fa-home text-sm"></i>
+                    <span class="text-[10px] mt-0.5">Home</span>
+                </a>
+                <a href="/about" class="flex flex-col items-center px-2 py-1 text-gray-500">
+                    <i class="fas fa-info-circle text-sm"></i>
+                    <span class="text-[10px] mt-0.5">About</span>
+                </a>
+                <a href="/pricing" class="flex flex-col items-center px-2 py-1 text-gray-500">
+                    <i class="fas fa-tag text-sm"></i>
+                    <span class="text-[10px] mt-0.5">Harga</span>
+                </a>
+                <a href="/faq" class="flex flex-col items-center px-2 py-1 text-gray-500">
+                    <i class="fas fa-question-circle text-sm"></i>
+                    <span class="text-[10px] mt-0.5">FAQ</span>
+                </a>
+                <a href="/contact" class="flex flex-col items-center px-2 py-1 text-gray-500">
+                    <i class="fas fa-envelope text-sm"></i>
+                    <span class="text-[10px] mt-0.5">Kontak</span>
+                </a>
+            </div>
+        </div>
     </nav>
+
 
     <!-- Hero Section -->
     <section class="bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 text-white py-12 lg:py-20 relative overflow-hidden">

@@ -36,7 +36,7 @@ class AdminPanelProvider extends PanelProvider
             ->darkModeBrandLogo(asset('images/logo-dark.svg'))
             ->favicon(asset('favicon.ico'))
             ->colors([
-                'primary' => Color::Violet,
+                'primary' => Color::Blue,
                 'secondary' => Color::Slate,
                 'danger' => Color::Rose,
                 'success' => Color::Emerald,
@@ -45,7 +45,7 @@ class AdminPanelProvider extends PanelProvider
                 'gray' => Color::Zinc,
             ])
             ->font('Inter')
-            ->darkMode(true)
+            ->darkMode(false)
             ->sidebarCollapsibleOnDesktop()
             ->sidebarFullyCollapsibleOnDesktop()
             ->sidebarWidth('18rem')

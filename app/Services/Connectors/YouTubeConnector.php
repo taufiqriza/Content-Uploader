@@ -11,15 +11,22 @@ use Exception;
 
 class YouTubeConnector implements SocialPlatformConnector
 {
-    protected string $clientId;
-    protected string $clientSecret;
-    protected string $redirectUri;
+    protected ?string $clientId;
+    protected ?string $clientSecret;
+    protected ?string $redirectUri;
 
     public function __construct()
     {
         $this->clientId = config('services.youtube.client_id');
         $this->clientSecret = config('services.youtube.client_secret');
         $this->redirectUri = config('services.youtube.redirect_uri');
+    }
+
+    protected function ensureConfigured(): void
+    {
+        if (empty($this->clientId) || empty($this->clientSecret)) {
+            throw new Exception('YouTube API not configured. Please set YOUTUBE_CLIENT_ID and YOUTUBE_CLIENT_SECRET in your .env file.');
+        }
     }
 
     public function getPlatformName(): string
@@ -38,6 +45,8 @@ class YouTubeConnector implements SocialPlatformConnector
 
     public function getAuthorizationUrl(string $state): string
     {
+        $this->ensureConfigured();
+        
         $params = http_build_query([
             'client_id' => $this->clientId,
             'redirect_uri' => $this->redirectUri,
@@ -47,6 +56,7 @@ class YouTubeConnector implements SocialPlatformConnector
             'prompt' => 'consent',
             'state' => $state,
         ]);
+
 
         return 'https://accounts.google.com/o/oauth2/v2/auth?' . $params;
     }
